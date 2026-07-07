@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Apply for Frontend Internship</title>
+</head>
+<body>
+
+<h1>Apply for Frontend Internship</h1>
+
+<form>
+    <label for="fullname">Full Name:</label>
+    <br/>
+    <input type="text" id="fullname" name="fullname">
+<br/>
+    <label for="email">Email Address:</label>
+    <br/>
+    <input type="text" id="email" name="email">
+<br/>
+    <label for="address">Address:</label>
+    <br/>
+    <input type="text" id="address" name="address">
+<br/>
+    <label for="faculty">Select Your Faculty:</label>
+    <br/>
+    <select id="faculty" name="faculty">
+        <option>--Choose Faculty--</option>
+        <option>Engineering</option>
+        <option>Computer Science</option>
+        <option>Commerce</option>
+    </select>
+<br/>
+    <label>Your Age Range:</label>
+    <div class="option-group">
+        <label><input type="radio" name="age" value="18-25"> 18–25</label>
+        <br/>
+        <label><input type="radio" name="age" value="26-35"> 26–35</label>
+        <br/>
+        <label><input type="radio" name="age" value="36+"> 36+</label>
+    </div>
+
+    <label>Frontend Experience Level:</label>
+    <div class="option-group">
+        <label><input type="radio" name="experience" value="beginner"> Beginner</label>
+        <br/>
+        <label><input type="radio" name="experience" value="intermediate"> Intermediate</label>
+        <br/>
+        <label><input type="radio" name="experience" value="advanced"> Advanced</label>
+        <br/>
+    </div>
+
+    <label>Technologies You Know:</label>
+    <div class="option-group">
+        <label><input type="checkbox" name="tech" value="html"> HTML</label>
+        <br/>
+        <label><input type="checkbox" name="tech" value="css"> CSS</label>
+        <br/>
+        <label><input type="checkbox" name="tech" value="javascript"> JavaScript</label>
+        <br/>
+        <label><input type="checkbox" name="tech" value="react"> React</label>
+        <br/>
+        <label><input type="checkbox" name="tech" value="tailwind"> Tailwind CSS</label>
+    </div>
+
+<input list="tech-list" id="tech-select" name="tech-select" style="margin-top:10px;" placeholder="Choose a technology...">
+
+<datalist id="tech-list">
+    <option value="HTML">
+    <option value="CSS">
+    <option value="JavaScript">
+    <option value="React">
+    <option value="Tailwind CSS">
+</datalist>
+<br/>
+    <label for="browser">Choose your browser:</label>
+    
+    <input type="text" id="browser" name="browser">
+
+    <br/>
+    <br/>
+    <button type="submit">Submit Application</button>
+</form>
+
+</body>
+</html>
