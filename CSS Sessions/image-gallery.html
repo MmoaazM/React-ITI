@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creative Image Gallery in CSS</title>
+<style>
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+    background: #f4ecec; 
+  }
+
+  .gallery-header {
+    text-align: center;
+    padding: 60px 20px 35px;
+  }
+
+  .gallery-header h1 {
+    color: #6c3ce0;       
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 800;
+    margin-bottom: 10px;
+  }
+
+  .gallery-header p {
+    color: #6b7280;       
+    font-size: 1rem;
+  }
+
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;              
+    max-width: 950px;
+    margin: 0 auto;         
+    padding: 0 20px 70px;
+  }
+
+  .gallery img {
+    width: 100%;            
+    height: 170px;            
+    object-fit: cover;        
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    display: block;
+    transition: transform 0.2s ease;
+  }
+
+  .gallery img:hover {
+    transform: translateY(-4px);
+  }
+
+  
+  @media (max-width: 700px) {
+    .gallery { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 420px) {
+    .gallery { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+
+  <header class="gallery-header">
+    <h1>Creative Image Gallery in CSS</h1>
+    <p>A creative image gallery created with pure CSS.</p>
+  </header>
+
+  <div class="gallery">
+    <img src="gallery1.jpg" alt="House in winter">
+    <img src="gallery-2.jpg" alt="Race car on street">
+    <img src="gallery-3.jpg" alt="Modern building at night">
+    <img src="gallery-4.jpg" alt="Red cardinal bird on branch">
+  </div>
+
+</body>
+</html>
