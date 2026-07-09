@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mario - Game Series</title>
+<style>
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+    background: #eef0fb; 
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .card {
+    position: relative;      
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 900px;
+    width: 100%;
+    padding: 55px 60px;
+    border-radius: 28px;
+    overflow: hidden;          
+    background: linear-gradient(135deg, #4c3fd6 0%, #6659e6 100%);
+    color: #ffffff;
+  }
+  .card__text {
+    max-width: 460px;
+  }
+
+  .card__eyebrow {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 14px;
+  }
+
+  .card__label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .card__title {
+    font-family: 'Arial Black', Impact, sans-serif;
+    font-style: italic;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    letter-spacing: -1px;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .card__description {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 32px;
+  }
+
+  .card__actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn--play {
+    background: #ffffff;
+    color: #4c3fd6;
+  }
+
+  .btn--watch {
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+  }
+  .card__image {
+    position: relative;
+    flex-shrink: 0;           
+    width: 42%;
+    max-width: 320px;
+  }
+
+  .card__image img {
+    width: 100%;
+    display: block;
+  }
+  .block-icon {
+    position: absolute;
+    top: -10px;
+    right: 40px;
+    width: 46px;
+  }
+  @media (max-width: 700px) {
+    .card { flex-direction: column; text-align: center; padding: 40px 30px; }
+    .card__text { max-width: 100%; }
+    .card__actions { justify-content: center; }
+    .card__image { width: 65%; max-width: 220px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="card__text">
+      <p class="card__eyebrow">#2 Trending</p>
+      <p class="card__label">Game series</p>
+      <h1 class="card__title">MARIO</h1>
+      <p class="card__description">
+        Super Mario is a platform game series created by Nintendo
+        starring their mascot, Mario. It is the central series of the
+        greater Mario franchise. At least one Super Mario game has
+        been released for every major Nintendo video game console.
+        There are more than 20 games in the series.
+      </p>
+      <div class="card__actions">
+        <button class="btn btn--play">PLAY</button>
+        <button class="btn btn--watch">▶ WATCH GAMEPLAY</button>
+      </div>
+    </div>
+    <div class="card__image">
+      <img src="block-icon.png" alt="Mario jumping">
+    </div>
+  </div>
+
+</body>
+</html>
