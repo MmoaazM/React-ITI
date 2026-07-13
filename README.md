@@ -6,8 +6,8 @@ Welcome to my learning repository! This project serves as a dedicated space wher
 
 ## 🗺️ Roadmap & Progress Tracker
 
-- [ ] **Phase 1: Semantic HTML5** — Structure, accessibility, and modern tags.
-- [ ] **Phase 2: CSS3 & Responsive Design** — Flexbox, Grid, animations, and media queries.
+- [x] **Phase 1: Semantic HTML5** — Structure, accessibility, and modern tags.
+- [x] **Phase 2: CSS3 & Responsive Design** — Flexbox, Grid, animations, and media queries.
 - [ ] **Phase 3: JavaScript Fundamentals** *(Optional/Prerequisite)* — DOM manipulation, ES6+ features, and async fetching.
 - [ ] **Phase 4: React.js** — Components, JSX, Props, State, Hooks, and API integration.
 
