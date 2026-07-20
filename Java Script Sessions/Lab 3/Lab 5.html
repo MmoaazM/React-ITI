@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JS DOM Lab — 10 Exercises</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #eef1f6;
+    --card-bg: #ffffff;
+    --ink: #1b2430;
+    --muted: #5b6472;
+    --accent: #4f46e5;
+    --accent-2: #0ea5a0;
+    --warn: #f59e0b;
+    --border: #dce2ea;
+    --radius: 10px;
+    --mono: 'JetBrains Mono', monospace;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    padding: 40px 24px 80px;
+  }
+
+  header {
+    max-width: 1100px;
+    margin: 0 auto 40px;
+  }
+
+  header .eyebrow {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  header h1 {
+    font-family: var(--display);
+    font-size: 34px;
+    margin: 6px 0 8px;
+  }
+
+  header p {
+    color: var(--muted);
+    font-size: 15px;
+    max-width: 640px;
+  }
+
+  main.grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  @media (max-width: 720px) {
+    main.grid { grid-template-columns: 1fr; }
+  }
+
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-head {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    background: #fafbfc;
+  }
+
+  .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .card-tag {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .card-body {
+    padding: 18px 18px 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card h2 {
+    font-family: var(--display);
+    font-size: 18px;
+    margin: 0 0 6px;
+  }
+
+  .card .desc {
+    color: var(--muted);
+    font-size: 13.5px;
+    margin: 0 0 16px;
+    line-height: 1.5;
+  }
+
+  .demo {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn {
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+    background: var(--accent);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background 0.15s ease;
+  }
+
+  .btn:hover { background: #4338ca; }
+
+  .input {
+    font-family: var(--body);
+    font-size: 14px;
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    outline: none;
+    width: 100%;
+  }
+
+  .input:focus { border-color: var(--accent); }
+
+  .output {
+    font-family: var(--mono);
+    font-size: 13.5px;
+    background: #f6f7fb;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin: 0;
+    min-height: 20px;
+    color: var(--ink);
+  }
+
+  .panel {
+    background: var(--accent-2);
+    border-radius: 8px;
+    padding: 16px;
+    color: #fff;
+    font-family: var(--mono);
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .square {
+    width: 90px;
+    height: 90px;
+    border-radius: 8px;
+    background: var(--accent-2);
+    transition: background 0.2s ease;
+  }
+
+  .demo-img {
+    width: 100%;
+    max-width: 220px;
+    border-radius: 8px;
+    display: block;
+  }
+
+  .list {
+    font-family: var(--mono);
+    font-size: 13.5px;
+    background: #f6f7fb;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 12px 12px 28px;
+    margin: 0;
+    min-height: 20px;
+  }
+
+  .list li { margin-bottom: 4px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">dom_manipulation.js</div>
+  <h1>JavaScript DOM Lab</h1>
+  <p>Ten short exercises, each wired up with vanilla JavaScript — click, type, hover, and press keys to see the DOM update live.</p>
+</header>
+
+<main class="grid">
+
+  <section class="card" id="ex1">
+    <div class="card-head">
+      <span class="dot" style="background:var(--accent)"></span>
+      <span class="dot" style="background:var(--accent-2)"></span>
+      <span class="dot" style="background:var(--warn)"></span>
+      <span class="card-tag">ex_01</span>
+    </div>
+    <div class="card-body">
+      <h2>Button → Alert</h2>
+      <p class="desc">Click the button to display an alert.</p>
+      <div class="demo">
+        <button id="btn1" class="btn">Click me</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="ex2">
+    <div class="card-head">
+      <span class="dot" style="background:var(--accent)"></span>
+      <span class="dot" style="background:var(--accent-2)"></span>
+      <span class="dot" style="background:var(--warn)"></span>
+      <span class="card-tag">ex_02</span>
+    </div>
+    <div class="card-body">
+      <h2>Toggle Visibility</h2>
+      <p class="desc">Click the button to show or hide the div.</p>
+      <div class="demo">
+        <div id="box2" class="panel">I'm a div you can toggle</div>
+        <button id="btn2" class="btn">Toggle</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="ex3">
+    <div class="card-head">
+      <span class="dot" style="background:var(--accent)"></span>
+      <span class="dot" style="background:var(--accent-2)"></span>
+      <span class="dot" style="background:var(--warn)"></span>
+      <span class="card-tag">ex_03</span>
+    </div>
+    <div class="card-body">
+      <h2>Live Text Echo</h2>
+      <p class="desc">Type in the input, watch the paragraph update in real time.</p>
+      <div class="demo">
+        <input type="text" id="input3" class="input" placeholder="Start typing...">
+        <p id="para3" class="output">You typed:</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="ex4">
+    <div class="card-head">
+      <span class="dot" style="background:var(--accent)"></span>
+      <span class="dot" style="background:var(--accent-2)"></span>
+      <span class="dot" style="background:var(--warn)"></span>
+      <span class="card-tag">ex_04</span>
+    </div>
+    <div class="card-body">
+      <h2>Hover Color Change</h2>
+      <p class="desc">Hover over the square to change its background color.</p>
+      <div class="demo">
+        <div id="square4" class="square"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="ex5">
+    <div class="card-head">
+      <span class="dot" style="background:var(--accent)"></span>
+      <span class="dot" style="background:var(--accent-2)"></span>
+      <span class="dot" style="background:var(--warn)"></span>
+      <span class="card-tag">ex_05</span>
+    </div>
+    <div class="card-body">
+      <h2>Key Press Logger</h2>
+      <p class="desc">Press any key on your keyboard — the message updates below.</p>
+      <div class="demo">
+        <p id="para5" class="output">Press any key...</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="ex6">
+    <div class="card-head">
+      <span class="dot" style="background:var(--accent)"></span>
+      <span class="dot" style="background:var(--accent-2)"></span>
+      <span class="dot" style="background:var(--warn)"></span>
+      <span class="card-tag">ex_06</span>
+    </div>
+    <div class="card-body">
+      <h2>Image Switcher</h2>
+      <p class="desc">Click the button to switch to a different image.</p>
+      <div class="demo">
+        <img id="img6" class="demo-img" src="https://picsum.photos/id/1015/300/200" alt="Sample photo">
+        <button id="btn6" class="btn">Switch Image</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="ex7">
+    <div class="card-head">
+      <span class="dot" style="background:var(--accent)"></span>
+      <span class="dot" style="background:var(--accent-2)"></span>
+      <span class="dot" style="background:var(--warn)"></span>
+      <span class="card-tag">ex_07</span>
+    </div>
+    <div class="card-body">
+      <h2>Show Content In Alert</h2>
+      <p class="desc">Click the button to show this paragraph's text in an alert.</p>
+      <div class="demo">
+        <p id="para7" class="output">This is the paragraph's hidden message.</p>
+        <button id="btn7" class="btn">Show Content</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="ex8">
+    <div class="card-head">
+      <span class="dot" style="background:var(--accent)"></span>
+      <span class="dot" style="background:var(--accent-2)"></span>
+      <span class="dot" style="background:var(--warn)"></span>
+      <span class="card-tag">ex_08</span>
+    </div>
+    <div class="card-body">
+      <h2>Change Heading Text</h2>
+      <p class="desc">Click the button to change the heading's text.</p>
+      <div class="demo">
+        <h1 id="heading8" style="font-size:20px;margin:0;">Original Title</h1>
+        <button id="btn8" class="btn">Change Text</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="ex9">
+    <div class="card-head">
+      <span class="dot" style="background:var(--accent)"></span>
+      <span class="dot" style="background:var(--accent-2)"></span>
+      <span class="dot" style="background:var(--warn)"></span>
+      <span class="card-tag">ex_09</span>
+    </div>
+    <div class="card-body">
+      <h2>Random Background Color</h2>
+      <p class="desc">Click the button to change the div's background color.</p>
+      <div class="demo">
+        <div id="box9" class="panel">Click the button</div>
+        <button id="btn9" class="btn">Change Color</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="ex10">
+    <div class="card-head">
+      <span class="dot" style="background:var(--accent)"></span>
+      <span class="dot" style="background:var(--accent-2)"></span>
+      <span class="dot" style="background:var(--warn)"></span>
+      <span class="card-tag">ex_10</span>
+    </div>
+    <div class="card-body">
+      <h2>Add List Item</h2>
+      <p class="desc">Type text and click the button to add it as a new list item.</p>
+      <div class="demo">
+        <input type="text" id="input10" class="input" placeholder="Item text...">
+        <button id="btn10" class="btn">Add Item</button>
+        <ul id="list10" class="list"></ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
