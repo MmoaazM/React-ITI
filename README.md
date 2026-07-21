@@ -8,14 +8,5 @@ Welcome to my learning repository! This project serves as a dedicated space wher
 
 - [x] **Phase 1: Semantic HTML5** — Structure, accessibility, and modern tags.
 - [x] **Phase 2: CSS3 & Responsive Design** — Flexbox, Grid, animations, and media queries.
-- [ ] **Phase 3: JavaScript Fundamentals** *(Optional/Prerequisite)* — DOM manipulation, ES6+ features, and async fetching.
+- [x] **Phase 3: JavaScript Fundamentals** *(Optional/Prerequisite)* — DOM manipulation, ES6+ features, and async fetching.
 - [ ] **Phase 4: React.js** — Components, JSX, Props, State, Hooks, and API integration.
-
----
-
-## 📂 Repository Structure
-
-```text
-├── 01-html-basics/      # HTML syntax, semantic tags, and forms
-├── 02-css-styling/      # Flexbox layouts, Grid systems, and custom UI components
-└── 04-react-apps/       # React components, hooks practice, and dynamic web apps
